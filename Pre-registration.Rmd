@@ -1,0 +1,71 @@
+---
+title           : "Range-shifts of the Black-capped Chickadee"
+shorttitle      : "Pre-registration"
+date            : "`r Sys.setlocale('LC_TIME', 'C'); format(Sys.time(), '%d\\\\. %B %Y')`"
+
+author: 
+  - name        : Rory Macklin
+    affiliation : 1
+
+affiliation:
+  - id          : 1
+    institution : University of British Columbia, Department of Zoology
+
+output: prereg::prereg_pdf
+
+bibliography: Zotero_Library.bib
+
+csl: ecology-letters.csl
+---
+
+<!-- To keep pre-registrations to a reasonable length for readers, we recommend answers fit within a single page .pdf document, roughly 3200 characters. Read more about this here: https://aspredicted.org/messages/why_limits.php -->
+
+## Data collection
+
+<!-- Have any data been collected for this study already? (Note: "Yes" is not an accepted answer.) -->
+
+**It's complicated.** We have already collected some data but explain in the "Other" section why readers may consider this a valid **pre**-registration nevertheless.
+
+## Hypothesis
+
+<!-- What's the main question being asked or hypothesis being tested in this study? -->
+
+The Black-capped Chickadee (*Poecile atricapillus*) has increased its abundance in Vancouver, British Columbia, Canada.
+
+## Dependent variable
+
+<!-- Describe the key dependent variable(s) specifying how they will be measured. -->
+
+The dependent variable will be the annual trend in abundance of Black-capped Chickadee, measured since the earliest data available along the Breeding Bird Survey (see @sauerNorthAmericanBreeding2013) route 212 "Point Grey".
+
+## Analyses
+
+A generalized linear model with a log link function will be applied to the annual total count of Black-capped Chickadees from the Breeding Bird Survey route 212 "Point Grey" including every year of data available through the survey. Year will be used as an explanatory variable to generate a coefficient for annual trend. A trend coefficient will be deemed significantly positive if it's 95% confidence interval is entirely greater than 0.
+
+## Outliers and exclusions
+
+All total counts will be included. There will certainly be years with missing data, and these will be treated as missing values rather than zero-counts.
+
+## Sample size
+
+Sample size will be the number of years with total count data for Breeding Bird Survey route 212 "Point Grey".
+
+## Other
+
+All though these data are already collected, there are many options for how to analyze them. I make this preregistration to document the planned analysis method.
+
+## Study type
+
+This will be an archival study, utilizing data collected over the last century.
+
+# References
+
+## 
+
+```{=tex}
+\vspace{-2pc}
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{-1in}
+\setlength{\parskip}{8pt}
+```
+\noindent
