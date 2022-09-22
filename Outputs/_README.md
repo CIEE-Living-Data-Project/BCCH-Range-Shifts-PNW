@@ -1,0 +1,2 @@
+# README
+## This directory will contain draft versions and RMD files used for generating the pre-registration and manuscript for this project. This includes information related to the bibliography of the manuscript such as BIB and CSL files.
