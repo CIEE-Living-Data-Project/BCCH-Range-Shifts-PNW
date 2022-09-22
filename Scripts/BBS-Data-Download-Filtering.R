@@ -18,6 +18,7 @@ library(groundhog)
 
 groundhog.library(tidyverse, date = "2022-09-14")
 groundhog.library(zip, date = "2022-09-14")
+groundhog.library(visreg, date = "2022-09-14")
 
 # We will use the bbsAssistant package to download the Breeding Bird Survey
 # dataset.
@@ -66,6 +67,9 @@ PointGrey_TotalCounts <- read_csv("./Data/BBS_raw/British_Columbia/BritCol.csv")
 PointGrey_BCCH <- PointGrey_TotalCounts %>%
   filter(AOU == "07350")
 
+PointGrey_BCCH$YearSince <- PointGrey_BCCH$Year - min(PointGrey_BCCH$Year)
+PointGrey_BCCH_subset <- PointGrey_BCCH[!(PointGrey_BCCH$Year %in% c(1979, 2000)),]
+
 # Write data to cleaned CSV file, if necessary creating a subdirectory for the
 # filtered dataset.
 
@@ -76,3 +80,7 @@ if(!(dir.exists("./Data/BBS_filtered"))) {
 write_csv(PointGrey_BCCH, "./Data/BBS_filtered/PointGrey_BCCH.csv")
 
 
+glm <- glm(data = PointGrey_BCCH_subset, SpeciesTotal ~ Year, family = quasipoisson(link = "log"))
+summary(glm)
+
+visreg(glm, xvar = "Year", ylim = range(PointGrey_BCCH_subset$SpeciesTotal), rug = 2, scale = "response") 
