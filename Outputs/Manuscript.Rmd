@@ -1,0 +1,50 @@
+---
+title: "Range Shifts of the Black-capped Chickadee"
+author: "Rory Macklin"
+date: "`r Sys.Date()`"
+
+geometry: margin=1in
+header-includes:
+  - \usepackage{setspace}
+  - \doublespacing
+  - \usepackage{lineno}
+  - \linenumbers
+  - \usepackage{fontspec}
+  - \setmainfont{Times New Roman}
+  
+output: 
+  pdf_document:
+    latex_engine: xelatex
+
+
+bibliography: Bibliography/Zotero_Library.bib
+
+csl: Bibliography/ecology-letters.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Title**: Determining the Northern Extent of the Black-capped Chickadee (*Poecile atricapillus)* on the Sunshine Coast, British Columbia, Canada.
+
+Rory Macklin^1\*^ , Jill Jankowski^1,2^
+
+1.  University of British Columbia, Department of Zoology, Vancouver, British Columbia
+2.  Biodiversity Research Centre, Vancouver, British Columbia
+
+\*Corresponding Author
+
+\newpage
+
+# Abstract
+
+# Introduction
+
+# Methods
+
+# Results
+
+# Discussion
+
+# References
