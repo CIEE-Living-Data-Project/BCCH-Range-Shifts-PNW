@@ -13,9 +13,9 @@ affiliation:
 
 output: prereg::prereg_pdf
 
-bibliography: Zotero_Library.bib
+bibliography: Bibliography/Zotero_Library.bib
 
-csl: ecology-letters.csl
+csl: Bibliography/ecology-letters.csl
 ---
 
 <!-- To keep pre-registrations to a reasonable length for readers, we recommend answers fit within a single page .pdf document, roughly 3200 characters. Read more about this here: https://aspredicted.org/messages/why_limits.php -->
