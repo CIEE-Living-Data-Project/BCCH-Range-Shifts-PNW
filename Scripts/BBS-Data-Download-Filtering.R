@@ -78,9 +78,3 @@ if(!(dir.exists("./Data/Clean_Data/BBS_filtered"))) {
 }
 
 write_csv(PointGrey_BCCH, "./Data/Clean_Data/BBS_filtered/PointGrey_BCCH.csv")
-
-
-glm <- glm(data = PointGrey_BCCH_subset, SpeciesTotal ~ Year, family = quasipoisson(link = "log"))
-summary(glm)
-
-visreg(glm, xvar = "Year", ylim = range(PointGrey_BCCH_subset$SpeciesTotal), rug = 2, scale = "response") 
