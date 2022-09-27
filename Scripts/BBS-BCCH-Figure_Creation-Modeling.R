@@ -1,7 +1,8 @@
 ################################################################################
 
 # Script Title: Plotting total counts of Black-capped Chickadees in the Breeding
-# Bird Survey Data for Route 212 "Point Grey"
+# Bird Survey Data for Route 212 "Point Grey" and applying a Generalized Linear 
+# Model.
 
 # Script Author: Rory Macklin (macklin@zoology.ubc.ca)
 
@@ -30,9 +31,25 @@ PointGrey_BCCH_Plot <- ggplot(data = PointGrey_BCCH, mapping = aes(x = Year, y =
   geom_point() +
   xlab("Year") +
   ylab("Count of BCCH") +
-  theme_classic()
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = -0.1))
+  
+# View for error-checking.
 
 PointGrey_BCCH_Plot
+
+# Create appropriate subdirectory (if necessary) and write plot to a PDF file
+# with ggplot2 "ggsave" command, giving a descriptive filename including
+# write date.
+
+if(!(dir.exists("./Outputs/Figures"))) {
+  dir.create("./Outputs/Figures")
+}
+
+ggsave(plot = PointGrey_BCCH_Plot, 
+       filename = paste0("./Outputs/Figures/Fig_1_BBS_BCCH_PointGrey_Counts_", 
+                         Sys.Date(), ".pdf"),
+       device = "pdf")
 
 # Use base "glm" function to fit a Generalized Linear Model with a log-linked 
 # quasipoisson distribution (appropriate for overdispersed count data). Much of
@@ -46,4 +63,8 @@ PointGrey_BCCH_GLM <- glm(data = PointGrey_BCCH, SpeciesTotal ~ Year, family = q
 # numerically assess the characteristics of the model.
 
 summary(PointGrey_BCCH_GLM)
+
+# Use scale = "response" to convert the log-scale predicted values to the original
+# scale. See the above webpage for more information.
+
 visreg(PointGrey_BCCH_GLM, xvar = "Year", ylim = range(PointGrey_BCCH$SpeciesTotal), rug = 2, scale = "response") 
