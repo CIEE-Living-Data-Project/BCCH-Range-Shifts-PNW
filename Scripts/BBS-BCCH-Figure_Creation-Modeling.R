@@ -27,7 +27,7 @@ PointGrey_BCCH <- read_csv(file = "./Data/Clean_Data/BBS_filtered/PointGrey_BCCH
 
 # Use ggplot2 to plot counts over time in a scatter plot.
 
-PointGrey_BCCH_Plot <- ggplot(data = PointGrey_BCCH, mapping = aes(x = Year, y = SpeciesTotal)) +
+PointGrey_BCCH_Plot <- ggplot(data = PointGrey_BCCH, mapping = aes(x = Year, y = BCCH_Count)) +
   geom_point() +
   xlab("Year") +
   ylab("Count of BCCH") +
@@ -57,7 +57,7 @@ ggsave(plot = PointGrey_BCCH_Plot,
 # of British Columbia course "Quantitative methods in ecology and evolution",
 # accessed at https://www.zoology.ubc.ca/~schluter/R/Model.html on 2022-09-27.
 
-PointGrey_BCCH_GLM <- glm(data = PointGrey_BCCH, SpeciesTotal ~ Year, family = quasipoisson(link = "log"))
+PointGrey_BCCH_GLM <- glm(data = PointGrey_BCCH, BCCH_Count ~ Year, family = quasipoisson(link = "log"))
 
 # Use base "summary" and visreg package "visreg" commands to visually and 
 # numerically assess the characteristics of the model.
@@ -67,4 +67,4 @@ summary(PointGrey_BCCH_GLM)
 # Use scale = "response" to convert the log-scale predicted values to the original
 # scale. See the above webpage for more information.
 
-visreg(PointGrey_BCCH_GLM, xvar = "Year", ylim = range(PointGrey_BCCH$SpeciesTotal), rug = 2, scale = "response") 
+visreg(PointGrey_BCCH_GLM, xvar = "Year", ylim = range(PointGrey_BCCH$BCCH_Count), rug = 2, scale = "response") 

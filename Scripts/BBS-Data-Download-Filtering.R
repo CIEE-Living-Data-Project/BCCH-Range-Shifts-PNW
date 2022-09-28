@@ -18,7 +18,6 @@ library(groundhog)
 
 groundhog.library(tidyverse, date = "2022-09-14")
 groundhog.library(zip, date = "2022-09-14")
-groundhog.library(visreg, date = "2022-09-14")
 
 # We will use the bbsAssistant package to download the Breeding Bird Survey
 # dataset.
@@ -58,17 +57,20 @@ file.remove(states_delete)
 
 # Read and filter British Columbia total annual species counts and filter to
 # Point Grey route (#212).
+
 PointGrey_TotalCounts <- read_csv("./Data/Raw_Data/BBS_raw/British_Columbia/BritCol.csv") %>%
-  filter(Route == 212)
+  filter(Route == 212) %>%
+  select(RouteDataID, CountryNum, StateNum, Route, Year, AOU, SpeciesTotal)
 
 # Filter annual total counts for all species at Point Grey route to only include
-# Black-capped Chickadee (AOU code 07350).
+# Black-capped Chickadee (AOU code 07350). Filter out now redundant AOU codes,
+# rename columns to more accurately describe the data they contain.
 
 PointGrey_BCCH <- PointGrey_TotalCounts %>%
-  filter(AOU == "07350")
-
-PointGrey_BCCH$YearSince <- PointGrey_BCCH$Year - min(PointGrey_BCCH$Year)
-PointGrey_BCCH_subset <- PointGrey_BCCH[!(PointGrey_BCCH$Year %in% c(1979, 2000)),]
+  filter(AOU == "07350") %>%
+  select(-AOU) %>%
+  mutate(BCCH_Count = SpeciesTotal) %>%
+  select(-SpeciesTotal)
 
 # Write data to cleaned CSV file, if necessary creating a subdirectory for the
 # filtered dataset.
